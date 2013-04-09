@@ -51,7 +51,7 @@ double result;
                 + "[fFdD]?))"
                 + "[\\x00-\\x20]*");// Optional trailing "whitespace"
 
-        boolean inStr = strFrom != null && strFrom.length() > 0;
+        boolean inStr = (strFrom != null) && (strFrom.length() > 0);
 
         DecimalFormat df = new DecimalFormat("#,##0.###E0");
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
@@ -86,11 +86,39 @@ double result;
             }
         } else if (Unit.equals("Объем") || Unit.equals("Volume")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
-                result = Double.parseDouble(strFrom) * VolumeMatrix.VolumeCff[i][j];
+                result = Double.parseDouble(strFrom) * VolumeMatrix.VolumeCff[j][i];
 
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
-                    result = df.parse(strFrom).doubleValue() * VolumeMatrix.VolumeCff[i][j];
+                    result = df.parse(strFrom).doubleValue() * VolumeMatrix.VolumeCff[j][i];
+                } catch (ParseException ex) {
+                    Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                result = 0.0;
+            }
+        }
+        else if (Unit.equals("Плотность") || Unit.equals("Density")) {
+            if (inStr && Pattern.matches(fpRegex, strFrom)) {
+                result = Double.parseDouble(strFrom) * DensityMatrix.DensityCff[j][i];
+
+            } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
+                try {
+                    result = df.parse(strFrom).doubleValue() * DensityMatrix.DensityCff[j][i];
+                } catch (ParseException ex) {
+                    Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                result = 0.0;
+            }
+        }
+                else if (Unit.equals("Температура") || Unit.equals("Temperature")) {
+            if (inStr && Pattern.matches(fpRegex, strFrom)) {
+                result = Double.parseDouble(strFrom) * TemperatureMatrix.TempCff[j][i];
+
+            } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
+                try {
+                    result = df.parse(strFrom).doubleValue() * TemperatureMatrix.TempCff[j][i];
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }

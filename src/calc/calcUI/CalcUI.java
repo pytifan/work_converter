@@ -20,9 +20,7 @@ import javax.swing.JComboBox;
  */
 public class CalcUI extends javax.swing.JFrame {
    Converter converter = new Converter();
-       /**
-     * Creates new form CalcUI
-     */
+       /* Creates new form CalcUI*/
     public CalcUI() {
         setTitle("Unit Converter");
         initComponents();
@@ -33,13 +31,11 @@ public class CalcUI extends javax.swing.JFrame {
 LangMenuItem_Russ_.setState(true);
 PointMenuItem.setState(true);
      FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "ангстрем", "нанометр", "микрометр", "мм",
-            "cм", "дц", "м", "чейн", "км", "дюйм", "фут",
-            "ярд", "мил(mil)", "морская миля", "морская сажень"}));
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм","фут",
+    "ярд","мил(mil)","морская миля","морская сажень"}));
         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "ангстрем", "нанометр", "микрометр", "мм",
-            "cм", "дц", "м", "чейн", "км", "дюйм", "фут",
-            "ярд", "мил(mil)", "морская миля", "морская сажень"}));
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм","фут",
+    "ярд","мил(mil)","морская миля","морская сажень"}));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +79,7 @@ PointMenuItem.setState(true);
         });
 
         UnitChooseCBx.setMaximumRowCount(12);
-        UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Длина", "Площадь", "Объем" }));
+        UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Длина", "Площадь", "Объем", "Плотность", "Температура" }));
         UnitChooseCBx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UnitChooseCBxActionPerformed(evt);
@@ -219,7 +215,7 @@ PointMenuItem.setState(true);
                     .addComponent(ToTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ToCmBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -230,95 +226,173 @@ PointMenuItem.setState(true);
                  //  Switching Units in UnitChooseCombobox list
         switch (UnitChooseCBx.getSelectedIndex()) {  
             case 0://dlina
+                    ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
                 if (LangMenuItem_Russ_.isSelected()) {
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"ангстрем", "нанометр", "микрометр", "мм",
-                        "cм", "дц", "м", "чейн", "км", "дюйм", "фут", "ярд", "мил(mil)",
-                        "морская миля", "морская сажень"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"ангстрем", "нанометр", "микрометр", "мм",
-                        "cм", "дц", "м", "чейн", "км", "дюйм", "фут", "ярд",
-                        "мил(mil)", "морская миля", "морская сажень"}));
+            FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм","фут",
+    "ярд","мил(mil)","морская миля","морская сажень"}));
+               ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм","фут",
+    "ярд","мил(mil)","морская миля","морская сажень"}));
                 } else {//in English
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
-                        "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
-                        "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
-                        "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
-                        "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
+            FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Angstrom (Å)","Nanometre (nm)","Micrometre (µm)","Millimetre (mm)","Centimetre (cm)",
+    "Decimetre (dm)","Metre (m)","Chain","Kilometre (km)","Inch (in)","Foot (ft)",
+    "Yard (yd)","Mil(mil)","Sea mile","Fathom"}));
+               ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Angstrom (Å)","Nanometre (nm)","Micrometre (µm)","Millimetre (mm)","Centimetre (cm)",
+    "Decimetre (dm)","Metre (m)","Chain","Kilometre (km)","Inch (in)","Foot (ft)",
+    "Yard (yd)","Mil(mil)","Sea mile","Fathom"}));
                 }
                 break;
             case 1://square
+                    ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
                 if (LangMenuItem_Russ_.isSelected()) {
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"кв.нанометр", "кв.микрометр", "мм кв.",
-                        "см кв.", "дц кв.", "м2", "Ар", "Гектар", "км2", "Тауншип",
-                        "миля кв.", "Хомстед", "Акр", "Руд", "Род кв.", "Сквайр",
-                        "Ярд2", "Фут2", "Дюйм2"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"кв.нанометр", "кв.микрометр", "мм кв.",
-                        "см кв.", "дц кв.", "м2", "Ар", "Гектар", "км2", "Тауншип",
-                        "миля кв.", "Хомстед", "Акр", "Руд", "Род кв.", "Сквайр",
-                        "Ярд2", "Фут2", "Дюйм2"}));
+        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "кв.нанометр","кв.микрометр","мм кв.","см кв.","дц кв.","м2","Ар","Гектар","км2","Тауншип",
+    "миля кв.","Хомстед","Акр","Руд","Род кв.","Сквайр","Ярд2","Фут2","Дюйм2"}));
+           ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "кв.нанометр","кв.микрометр","мм кв.","см кв.","дц кв.","м2","Ар","Гектар","км2","Тауншип",
+    "миля кв.","Хомстед","Акр","Руд","Род кв.","Сквайр","Ярд2","Фут2","Дюйм2"}));
                 } else {//in English
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"Sq. nanometre", "Sq. micrometre", "Sq. millimetre",
-                        "Sq. centimetre (cm²)", "Sq. decimetre", "Sq. metre", "Are (a)",
-                        "Hectare (ha)", "Sq. kilometre", "Township", "Sq. mile", "Homestead",
-                        "Acre", "Rood", "Sq. rod", "Square", "Sq. yard (sy²)", "Sq. foot (ft²)", "Sq. inch (in²)"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(
-                            new String[]{"Sq. nanometre", "Sq. micrometre", "Sq. millimetre",
-                        "Sq. centimetre (cm²)", "Sq. decimetre", "Sq. metre", "Are (a)",
-                        "Hectare (ha)", "Sq. kilometre", "Township", "Sq. mile", "Homestead",
-                        "Acre", "Rood", "Sq. rod", "Square", "Sq. yard (sy²)", "Sq. foot (ft²)", "Sq. inch (in²)"}));
+        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Sq. nanometre","Sq. micrometre","Sq. millimetre","Sq. centimetre (cm²)","Sq. decimetre",
+    "Sq. metre","Are (a)","Hectare (ha)","Sq. kilometre","Township","Sq. mile", "Homestead",
+    "Acre","Rood","Sq. rod","Square","Sq. yard (sy²)","Sq. foot (ft²)","Sq. inch (in²)"}));
+                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Sq. nanometre","Sq. micrometre","Sq. millimetre","Sq. centimetre (cm²)","Sq. decimetre",
+    "Sq. metre","Are (a)","Hectare (ha)","Sq. kilometre","Township","Sq. mile", "Homestead",
+    "Acre","Rood","Sq. rod","Square","Sq. yard (sy²)","Sq. foot (ft²)","Sq. inch (in²)"}));
                 }
                 break;
             case 2://volume
-                if (LangMenuItem_Russ_.isSelected()) {
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "Микролитр", "Мм3", "Миллилитр", "Сантиметр3", "Сантилитр", "Децилитр", "Литр", "Дециметр3", "Декалитр", "Гектолитр", "Метр3", "Километр3",
-                        /*GB*/ "БаррельGB", "БушельGB", "ПэкGB", "ГаллонGB", "КвартаGB", "ПинтаGB", "Жидкая унцияGB",
-                        /*USA_dry:*/ "БаррельUSA,dry", "БушельUSA,dry", "ПэкUSA,dry", "ГаллонUSA,dry",
-                        "КвартаUSA,dry", "ПинтаUSA,dry", "ГиллUSA,dry", "Досковый футUSA,dry",
-                        /*USA_luquid:*/ "АкрофутUSA,luquid", "Кубический ярдUSA,luquid", "БаррельUSA,luquid",
-                        "Кубический футUSA,luquid", "ГаллонUSA,luquid", "КвартаUSA,luquid", "ПинтаUSA,luquid",
-                        "ГиллUSA,luquid", "Жидкая унцияUSA,luquid", "Кубический дюймUSA,luquid",
-                        "Жидкая драхмаUSA,luquid", "МинимUSA,luquid"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Микролитр", "Мм3", "Миллилитр", "Сантиметр3", "Сантилитр", "Децилитр", "Литр", "Дециметр3", "Декалитр", "Гектолитр", "Метр3", "Километр3",
-                        /*GB*/ "БаррельGB", "БушельGB", "ПэкGB", "ГаллонGB", "КвартаGB", "ПинтаGB", "Жидкая унцияGB",
-                        /*USA_dry:*/ "БаррельUSA,dry", "БушельUSA,dry", "ПэкUSA,dry", "ГаллонUSA,dry",
-                        "КвартаUSA,dry", "ПинтаUSA,dry", "ГиллUSA,dry", "Досковый футUSA,dry",
-                        /*USA_luquid:*/ "АкрофутUSA,luquid", "Кубический ярдUSA,luquid", "БаррельUSA,luquid",
-                        "Кубический футUSA,luquid", "ГаллонUSA,luquid", "КвартаUSA,luquid", "ПинтаUSA,luquid",
-                        "ГиллUSA,luquid", "Жидкая унцияUSA,luquid", "Кубический дюймUSA,luquid",
-                        "Жидкая драхмаUSA,luquid", "МинимUSA,luquid"}));
+                    ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
+                if (LangMenuItem_Russ_.isSelected()) { //in Russian
+                    //if (longList){
+                FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{    
+    "акр-фут","акр-дюйме","attoliter","баррель","баррель (нефти)","ванна (библейский)","досковой фут","бушель","бушель (UK)","кабина (библейский)",
+    "cc","ccf","сантилитр","Кор (библейский)","шнур","сантиметр³","фут³","дюйм³","метр³","ярд³",
+    "чашка","чашка (UK)","децилитр","decistere","декалитр","dekastere","десертная ложка","десертная ложка (UK)","драхма","драхма (UK)",
+    "капля","сухая пинта","сухая кварта","exaliter","фемтолитр","галлон","галлон (UK)","гигалитр","гилл","гилл (UK)",
+    "гектолитр","Хин (библейский)","бочка","Гомер (библейский)","сто³ футов","килолитр","литр","log (библейский)","мегалитр", "микролитр",
+    "миллилитр","миним","миним (UK)","нанолитр","унция","унция (UK)","пек","пек (UK)","петалитр","пиколитр",
+    "пинта","пинта (UK)","кварта","кварта (UK)","ster","ст.ложка","ст.ложка (UK)","Таза (испанский)","ч. ложка","ч. ложка (UK)",
+    "teraliter","тун"}));
+                ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{    
+    "акр-фут","акр-дюйме","attoliter","баррель","баррель (нефти)","ванна (библейский)","досковой фут","бушель","бушель (UK)","кабина (библейский)",
+    "cc","ccf","сантилитр","Кор (библейский)","шнур","сантиметр³","фут³","дюйм³","метр³","ярд³",
+    "чашка","чашка (UK)","децилитр","decistere","декалитр","dekastere","десертная ложка","десертная ложка (UK)","драхма","драхма (UK)",
+    "капля","сухая пинта","сухая кварта","exaliter","фемтолитр","галлон","галлон (UK)","гигалитр","гилл","гилл (UK)",
+    "гектолитр","Хин (библейский)","бочка","Гомер (библейский)","сто³ футов","килолитр","литр","log (библейский)","мегалитр", "микролитр",
+    "миллилитр","миним","миним (UK)","нанолитр","унция","унция (UK)","пек","пек (UK)","петалитр","пиколитр",
+    "пинта","пинта (UK)","кварта","кварта (UK)","ster","ст.ложка","ст.ложка (UK)","Таза (испанский)","ч. ложка","ч. ложка (UK)",
+    "teraliter","тун"}));
+                    //} else {//shotList
+//                FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//    "мкл", "мм³", "миллилитр", "см³", "сантилитр", "децилитр", "литр", "дц³", "декалитр", "гектолитр", "м³", "км³",
+//    /*GB*/ "баррельGB", "бушельGB", "пэкGB", "галлонGB", "квартаGB", "пинтаGB", "жидкая унцияGB",
+//    /*USA_dry:*/ "баррельUSA,dry", "бушельUSA,dry", "пэкUSA,dry", "галлонUSA,dry","квартаUSA,dry", "пинтаUSA,dry", "гиллUSA,dry", "досковый футUSA,dry",
+//    /*USA_luquid:*/ "акрофутUSA,luquid", "ярд³USA,luquid", "баррельUSA,luquid","фут³USA,luquid", "галлонUSA,luquid", "квартаUSA,luquid",
+//    "пинтаUSA,luquid","гиллUSA,luquid", "жидкая унцияUSA,luquid", "дюйм³USA,luquid","жидкая драхмаUSA,luquid", "минимUSA,luquid"}));
+//                ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//    "мкл", "мм³", "миллилитр", "см³", "сантилитр", "децилитр", "литр", "дц³", "декалитр", "гектолитр", "м³", "км³",
+//    /*GB*/ "баррельGB", "бушельGB", "пэкGB", "галлонGB", "квартаGB", "пинтаGB", "жидкая унцияGB",
+//    /*USA_dry:*/ "баррельUSA,dry", "бушельUSA,dry", "пэкUSA,dry", "галлонUSA,dry","квартаUSA,dry", "пинтаUSA,dry", "гиллUSA,dry", "досковый футUSA,dry",
+//    /*USA_luquid:*/ "акрофутUSA,luquid", "ярд³USA,luquid", "баррельUSA,luquid","фут³USA,luquid", "галлонUSA,luquid", "квартаUSA,luquid",
+//    "пинтаUSA,luquid","гиллUSA,luquid", "жидкая унцияUSA,luquid", "дюйм³USA,luquid","жидкая драхмаUSA,luquid", "минимUSA,luquid"}));
+                //}
                 } else {//in English
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "µl", "mm³", "ml", "cm³", "cl", "dl", "Litre", "dm³", "Decalitre", "hl", "m³", "km³",
-                        /*GB*/ "Barrel GB", "Bushel GB (bu)", "Peck GB (pk)", "Gallon GB (gal)", "Quart GB (qt)", "Pint GB (pt)", "Fluid ounce GB (oz)",
-                        /*USA_dry:*/ "Barrel USA,dry", "Bushel USA,dry (bu)", "Peck USA,dry (pk)", "Gallon USA,dry (gal)", "Quart USA,dry (qt)", "Pint USA,dry (pt)", "Gill USA,dry", "Board foot USA,dry (FBM)",
-                        /*USA_luquid:*/ "Acre foot USA,luquid", "Cubic yard USA,luquid (yd³)", "Barrel USA,luquid",
-                        "Cubic foot USA,luquid (ft³)", "Gallon USA,luquid (gal)", "Quart USA,luquid (qt)", "Pint USA,luquid (pt)",
-                        "Gill USA,luquid", "Fluid ounce USA,luquid (oz)", "Cubic inch USA,luquid (in³)",
-                        "Fluid dram USA,luquid", "Minim USA,luquid"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "µl", "mm³", "ml", "cm³", "cl", "dl", "Litre", "dm³", "Decalitre", "hl", "m³", "km³",
-                        /*GB*/ "Barrel GB", "Bushel GB (bu)", "Peck GB (pk)", "Gallon GB (gal)", "Quart GB (qt)", "Pint GB (pt)", "Fluid ounce GB (oz)",
-                        /*USA_dry:*/ "Barrel USA,dry", "Bushel USA,dry (bu)", "Peck USA,dry (pk)", "Gallon USA,dry (gal)", "Quart USA,dry (qt)", "Pint USA,dry (pt)", "Gill USA,dry", "Board foot USA,dry (FBM)",
-                        /*USA_luquid:*/ "Acre foot USA,luquid", "Cubic yard USA,luquid (yd³)", "Barrel USA,luquid",
-                        "Cubic foot USA,luquid (ft³)", "Gallon USA,luquid (gal)", "Quart USA,luquid (qt)", "Pint USA,luquid (pt)",
-                        "Gill USA,luquid", "Fluid ounce USA,luquid (oz)", "Cubic inch USA,luquid (in³)",
-                        "Fluid dram USA,luquid", "Minim USA,luquid"}));
+                    //if (longList)
+                FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "acre-foot","acre-inch","attoliter","barrel","barrel (oil)","bath (Biblical)","board foot","bushel","bushel (UK)","cab (Biblical)",
+    "cc","ccf","centiliter","cor (Biblical)","cord","cubic centimeter","cubic foot","cubic inch","cubic meter","cubic yard",
+    "cup","cup (UK)","deciliter","decistere","dekaliter","dekastere","dessertspoon","dessertspoon (UK)","dram","dram (UK)",
+    "drop","dry pint","dry quart","exaliter","femtoliter","gallon","gallon (UK)","gigaliter","gill","gill (UK)",
+    "hectoliter","hin (Biblical)","hogshead","homer (Biblical)","hundred-cubic foot","kiloliter","liter","log (Biblical)","megaliter","microliter",
+    "milliliter","minim","minim (UK)","nanoliter","ounce","ounce (UK)","peck","peck (UK)","petaliter","picoliter",
+    "pint","pint (UK)","quart","quart (UK)","stere","tablespoon","tablespoon (UK)","Taza (Spanish)","teaspoon","teaspoon (UK)",
+    "teraliter","tun"}));             
+                ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "acre-foot","acre-inch","attoliter","barrel","barrel (oil)","bath (Biblical)","board foot","bushel","bushel (UK)","cab (Biblical)",
+    "cc","ccf","centiliter","cor (Biblical)","cord","cubic centimeter","cubic foot","cubic inch","cubic meter","cubic yard",
+    "cup","cup (UK)","deciliter","decistere","dekaliter","dekastere","dessertspoon","dessertspoon (UK)","dram","dram (UK)",
+    "drop","dry pint","dry quart","exaliter","femtoliter","gallon","gallon (UK)","gigaliter","gill","gill (UK)",
+    "hectoliter","hin (Biblical)","hogshead","homer (Biblical)","hundred-cubic foot","kiloliter","liter","log (Biblical)","megaliter","microliter",
+    "milliliter","minim","minim (UK)","nanoliter","ounce","ounce (UK)","peck","peck (UK)","petaliter","picoliter",
+    "pint","pint (UK)","quart","quart (UK)","stere","tablespoon","tablespoon (UK)","Taza (Spanish)","teaspoon","teaspoon (UK)",
+    "teraliter","tun"}));
+                //} else { //shotList
+//                FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//    "µl", "mm³", "ml", "cm³", "cl", "dl", "Litre", "dm³", "Decalitre", "hl", "m³", "km³",
+//    /*GB*/ "Barrel GB", "Bushel GB (bu)", "Peck GB (pk)", "Gallon GB (gal)", "Quart GB (qt)", "Pint GB (pt)", "Fluid ounce GB (oz)",
+//    /*USA_dry:*/ "Barrel USA,dry", "Bushel USA,dry (bu)", "Peck USA,dry (pk)", "Gallon USA,dry (gal)", "Quart USA,dry (qt)", "Pint USA,dry (pt)", "Gill USA,dry", "Board foot USA,dry (FBM)",
+//    /*USA_luquid:*/ "Acre foot USA,luquid", "Cubic yard USA,luquid (yd³)", "Barrel USA,luquid",
+//    "Cubic foot USA,luquid (ft³)", "Gallon USA,luquid (gal)", "Quart USA,luquid (qt)", "Pint USA,luquid (pt)",
+//    "Gill USA,luquid", "Fluid ounce USA,luquid (oz)", "Cubic inch USA,luquid (in³)",
+//    "Fluid dram USA,luquid", "Minim USA,luquid"}));
+//                ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//    "µl", "mm³", "ml", "cm³", "cl", "dl", "Litre", "dm³", "Decalitre", "hl", "m³", "km³",
+//    /*GB*/ "Barrel GB", "Bushel GB (bu)", "Peck GB (pk)", "Gallon GB (gal)", "Quart GB (qt)", "Pint GB (pt)", "Fluid ounce GB (oz)",
+//    /*USA_dry:*/ "Barrel USA,dry", "Bushel USA,dry (bu)", "Peck USA,dry (pk)", "Gallon USA,dry (gal)", "Quart USA,dry (qt)", "Pint USA,dry (pt)", "Gill USA,dry", "Board foot USA,dry (FBM)",
+//    /*USA_luquid:*/ "Acre foot USA,luquid", "Cubic yard USA,luquid (yd³)", "Barrel USA,luquid",
+//    "Cubic foot USA,luquid (ft³)", "Gallon USA,luquid (gal)", "Quart USA,luquid (qt)", "Pint USA,luquid (pt)",
+//    "Gill USA,luquid", "Fluid ounce USA,luquid (oz)", "Cubic inch USA,luquid (in³)",
+//    "Fluid dram USA,luquid", "Minim USA,luquid"}));
+                    //}
                 }
                 break;
-            case 3://podacha
-                FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(
-                        new String[]{"p1", "p2", "p3", "p4"}));
-                ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(
-                        new String[]{"p1", "p2", "p3", "p4"}));
+            case 3://density
+                    ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
+                if (LangMenuItem_Russ_.isSelected()) {
+                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+     "attogram/л","centigram/л","дециграмм/л","dekagram/литр","exagram/л","femtogram/л","гигаграмм/л","г/см³","г/м³","г/мм³",
+     "г/л","гектограмм/л","кг/см³","кг/м³","кг/л","мегаграмм/л","микрограмм/л","миллиграмм/см³","миллиграмм/кубометр","миллиграмм/мм³",
+     "миллиграмм/л","нанограм/л","унция/фут³","унция/дюйм³","унция/галлон","petagram/л","picogram/л","фунт/фут³","фунт/дюйм³","фунт/галлон",
+     "psi/1000 футов","Teragram/л","тон/ярд³"
+                    }));
+                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+     "attogram/л","centigram/л","дециграмм/л","dekagram/литр","exagram/л","femtogram/л","гигаграмм/л","г/см³","г/м³","г/мм³",
+     "г/л","гектограмм/л","кг/см³","кг/м³","кг/л","мегаграмм/л","микрограмм/л","миллиграмм/см³","миллиграмм/кубометр","миллиграмм/мм³",
+     "миллиграмм/л","нанограм/л","унция/фут³","унция/дюйм³","унция/галлон","petagram/л","picogram/л","фунт/фут³","фунт/дюйм³","фунт/галлон",
+     "psi/1000 футов","Teragram/л","тон/ярд³"                   
+                    }));
+                } else {//in English
+                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "attogram/liter","centigram/liter","decigram/liter","dekagram/liter","exagram/liter","femtogram/liter","gigagram/liter","gram/centimeter³","gram/meter³","gram/millimeter³",
+    "gram/liter","hectogram/liter","kilogram/centimeter³","kilogram/meter³","kilogram/liter","megagram/liter","microgram/liter","milligram/centimeter³","milligram/meter³","milligram/millimeter³",
+    "milligram/liter","nanogram/liter","ounce/foot³","ounce/inch³","ounce/gallon","petagram/liter","picogram/liter","pound/foot³","pound/inch³","pound/gallon",
+    "psi/1000 feet","teragram/liter","ton/yard³"}));
+                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "attogram/liter","centigram/liter","decigram/liter","dekagram/liter","exagram/liter","femtogram/liter","gigagram/liter","gram/centimeter³","gram/meter³",
+    "gram/millimeter³","gram/liter","hectogram/liter","kilogram/centimeter³","kilogram/meter³","kilogram/liter","megagram/liter","microgram/liter","milligram/centimeter³","milligram/meter³",
+    "milligram/millimeter³","milligram/liter","nanogram/liter","ounce/foot³","ounce/inch³","ounce/gallon","petagram/liter","picogram/liter","pound/foot³",
+    "pound/inch³","pound/gallon","psi/1000 feet","teragram/liter","ton/yard³"}));
+                }
                 break;
+              case 4://temperature
+                    ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
+                if (LangMenuItem_Russ_.isSelected()) {
+                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Цельсий", "Фаренгейт", "Кельвин", "Ранкина", "Реомюра"}));
+                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Цельсий", "Фаренгейт", "Кельвин", "Ранкина", "Реомюра"}));
+                } else {//in English
+                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Celsius","Fahrenheit","Kelvin","Rankine","Réaumur"}));
+                  ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "Celsius","Fahrenheit","Kelvin","Rankine","Réaumur"}));
+                }
+                break;   
         }
     }//GEN-LAST:event_UnitChooseCBxActionPerformed
 
@@ -347,28 +421,33 @@ ToTxtField.setText(converter.myFormatter(converter.convert(
     }//GEN-LAST:event_FromTxtFieldActionPerformed
 
     private void LangMenuItem_Russ_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LangMenuItem_Russ_ActionPerformed
-        UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String []{"Длина", "Площадь", "Объем"}));
-        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "ангстрем", "нанометр", "микрометр", "мм",
-            "cм", "дц", "м", "чейн", "км", "дюйм", "фут",
-            "ярд", "мил(mil)", "морская миля", "морская сажень"}));
-        ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "ангстрем", "нанометр", "микрометр", "мм",
-            "cм", "дц", "м", "чейн", "км", "дюйм", "фут",
-            "ярд", "мил(mil)", "морская миля", "морская сажень"}));         
         LangMenuItem_Eng_.setState(false);
+        UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String []{"Длина","Площадь","Объем","Плотность","Температура"}));
+        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм",
+    "фут","ярд","мил(mil)","морская миля","морская сажень"}));
+        ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+    "ангстрем","нанометр","микрометр","мм","cм","дц","м","чейн","км","дюйм",
+    "фут","ярд", "мил(mil)", "морская миля", "морская сажень"}));         
+        ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
     }//GEN-LAST:event_LangMenuItem_Russ_ActionPerformed
 
     private void LangMenuItem_Eng_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LangMenuItem_Eng_ActionPerformed
-       UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String []{"Lenght","Area","Volume"}));
-        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
-            "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
-            "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
-        ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-            "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
-            "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
-            "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
+  UnitChooseCBx.setModel(new javax.swing.DefaultComboBoxModel(new String []{"Lenght","Area","Volume","Density","Temperature"}));
+//        FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//            "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
+//            "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
+//            "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
+//        ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+//            "Angstrom (Å)", "Nanometre (nm)", "Micrometre (µm)", "Millimetre (mm)",
+//            "Centimetre (cm)", "Decimetre (dm)", "Metre (m)", "Chain", "Kilometre (km)", "Inch (in)", "Foot (ft)",
+//            "Yard (yd)", "Mil(mil)", "Sea mile", "Fathom"}));
+        
+   ToTxtField.setText(converter.myFormatter(converter.convert(
+    FromCmBox.getSelectedIndex(),ToCmBx.getSelectedIndex(),FromTxtField.getText(),(String)UnitChooseCBx.getSelectedItem()),
+    CommaMenuItem.isSelected()));
         LangMenuItem_Russ_.setState(false);
     }//GEN-LAST:event_LangMenuItem_Eng_ActionPerformed
 
