@@ -74,7 +74,6 @@ double result;
         } else if (Unit.equals("Площадь") || Unit.equals("Area")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
                 result = Double.parseDouble(strFrom) * SquareMatrix.SquareCff[i][j];
-
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
                     result = df.parse(strFrom).doubleValue() * SquareMatrix.SquareCff[i][j];
@@ -115,10 +114,35 @@ double result;
                 else if (Unit.equals("Температура") || Unit.equals("Temperature")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
                 result = Double.parseDouble(strFrom) * TemperatureMatrix.TempCff[j][i];
-
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
                     result = df.parse(strFrom).doubleValue() * TemperatureMatrix.TempCff[j][i];
+                } catch (ParseException ex) {
+                    Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                result = 0.0;
+            }
+        }
+                else if (Unit.equals("Давление") || Unit.equals("Pressure")) {
+            if (inStr && Pattern.matches(fpRegex, strFrom)) {
+                result = Double.parseDouble(strFrom) * PressureMatrix.PressCff[j][i];
+            } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
+                try {
+                    result = df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i];
+                } catch (ParseException ex) {
+                    Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                result = 0.0;
+            }
+        }
+           else if (Unit.equals("Скорость") || Unit.equals("Velocity")) {
+            if (inStr && Pattern.matches(fpRegex, strFrom)) {
+                result = Double.parseDouble(strFrom) * VelocityMatrix.VelocityCff[j][i];
+            } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
+                try {
+                    result = df.parse(strFrom).doubleValue() * VelocityMatrix.VelocityCff[j][i];
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }
