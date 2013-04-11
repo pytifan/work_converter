@@ -58,22 +58,22 @@
             <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x434;"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem1">
+            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="FullMenu">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x43b;&#x43d;&#x44b;&#x439; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FullMenuActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem2">
+            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="ShortMenu">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="&#x41a;&#x440;&#x430;&#x442;&#x43a;&#x438;&#x439;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShortMenuActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -167,13 +167,14 @@
       <Properties>
         <Property name="maximumRowCount" type="int" value="12"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="7">
             <StringItem index="0" value="&#x414;&#x43b;&#x438;&#x43d;&#x430;"/>
             <StringItem index="1" value="&#x41f;&#x43b;&#x43e;&#x449;&#x430;&#x434;&#x44c;"/>
             <StringItem index="2" value="&#x41e;&#x431;&#x44a;&#x435;&#x43c;"/>
             <StringItem index="3" value="&#x41f;&#x43b;&#x43e;&#x442;&#x43d;&#x43e;&#x441;&#x442;&#x44c;"/>
             <StringItem index="4" value="&#x422;&#x435;&#x43c;&#x43f;&#x435;&#x440;&#x430;&#x442;&#x443;&#x440;&#x430;"/>
             <StringItem index="5" value="&#x414;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435;"/>
+            <StringItem index="6" value="&#x421;&#x43a;&#x43e;&#x440;&#x43e;&#x441;&#x442;&#x44c;"/>
           </StringArray>
         </Property>
       </Properties>

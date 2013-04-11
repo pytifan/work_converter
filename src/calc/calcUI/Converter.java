@@ -15,7 +15,7 @@ class Converter {
 //convertation with help of two-dimensions matrix
 //choosing needed coefficient-matrix with "if" - operator
 double result;
-    double convert(int i, int j, String strFrom, String Unit) {
+    double convert(int i, int j, String strFrom, String Unit, boolean Shortlist) {
 
         final String Digits = "(\\p{Digit}+)";
         final String HexDigits = "(\\p{XDigit}+)";
@@ -126,10 +126,12 @@ double result;
         }
                 else if (Unit.equals("Давление") || Unit.equals("Pressure")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
-                result = Double.parseDouble(strFrom) * PressureMatrix.PressCff[j][i];
+                result = (!Shortlist)?(Double.parseDouble(strFrom) * PressureMatrix.PressCff[j][i]):
+                        (Double.parseDouble(strFrom) * PressureMatrix.PressCffshort[j][i]);
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
-                    result = df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i];
+                   result = (!Shortlist)? (df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i]):
+                           (df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i]);
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }
