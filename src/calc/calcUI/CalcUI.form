@@ -8,9 +8,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x42f;&#x437;&#x44b;&#x43a;"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu4ActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JCheckBoxMenuItem" name="LangMenuItem_Russ_">
               <Properties>
@@ -146,7 +143,7 @@
                   <Component id="ToCmBx" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

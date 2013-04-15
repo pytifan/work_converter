@@ -85,11 +85,12 @@ double result;
             }
         } else if (Unit.equals("Объем") || Unit.equals("Volume")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
-                result = Double.parseDouble(strFrom) * VolumeMatrix.VolumeCff[j][i];
-
+                result = (!Shortlist)?(Double.parseDouble(strFrom) * VolumeMatrix.VolumeCff[j][i]):
+                        (Double.parseDouble(strFrom) * VolumeMatrix.VolumeCffshort[j][i]);
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
-                    result = df.parse(strFrom).doubleValue() * VolumeMatrix.VolumeCff[j][i];
+                    result = (!Shortlist)? (df.parse(strFrom).doubleValue() * VolumeMatrix.VolumeCff[j][i]):
+                           (df.parse(strFrom).doubleValue() * VolumeMatrix.VolumeCffshort[j][i]);
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -99,11 +100,13 @@ double result;
         }
         else if (Unit.equals("Плотность") || Unit.equals("Density")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
-                result = Double.parseDouble(strFrom) * DensityMatrix.DensityCff[j][i];
+                result = (!Shortlist)?(Double.parseDouble(strFrom) * DensityMatrix.DensityCff[j][i]):
+                        (Double.parseDouble(strFrom) * DensityMatrix.DensityCffshort[j][i]);
 
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
-                    result = df.parse(strFrom).doubleValue() * DensityMatrix.DensityCff[j][i];
+                    result = (!Shortlist)? (df.parse(strFrom).doubleValue() * DensityMatrix.DensityCff[j][i]):
+                           (df.parse(strFrom).doubleValue() * DensityMatrix.DensityCffshort[j][i]);
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }
