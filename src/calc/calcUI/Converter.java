@@ -134,7 +134,7 @@ double result;
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
                    result = (!Shortlist)? (df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i]):
-                           (df.parse(strFrom).doubleValue() * PressureMatrix.PressCff[j][i]);
+                           (df.parse(strFrom).doubleValue() * PressureMatrix.PressCffshort[j][i]);
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -144,10 +144,12 @@ double result;
         }
            else if (Unit.equals("Скорость") || Unit.equals("Velocity")) {
             if (inStr && Pattern.matches(fpRegex, strFrom)) {
-                result = Double.parseDouble(strFrom) * VelocityMatrix.VelocityCff[j][i];
+                result = (!Shortlist)?(Double.parseDouble(strFrom) * VelocityMatrix.VelocityCff[j][i]):
+                        (Double.parseDouble(strFrom) * VelocityMatrix.VelocityCffshort[j][i]);
             } else if (inStr && !Pattern.matches(fpRegex, strFrom)) {
                 try {
-                    result = df.parse(strFrom).doubleValue() * VelocityMatrix.VelocityCff[j][i];
+                    result = (!Shortlist)? (df.parse(strFrom).doubleValue() * VelocityMatrix.VelocityCff[j][i]):
+                           (df.parse(strFrom).doubleValue() * VelocityMatrix.VelocityCffshort[j][i]);
                 } catch (ParseException ex) {
                     Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -342,10 +342,10 @@ ToTxtField.setText(converter.myFormatter(converter.convert(
                         "teraliter", "тун"}));
                     } else {//shotList
           FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-    "акр-футов","бочка","баррель (нефти)","см³", "фут³", "Mcf=10³cf", "MMcf=10^6cf", "Bcf=10^9cf", "Tcf=10^12cf" ,"дюймов³","м³",
+    "акр-футов","баррель","баррель (нефть)","см³", "фут³", "Mcf=10³cf", "MMcf=10^6cf", "Bcf=10^9cf", "Tcf=10^12cf" ,"дюймов³","м³",
     "ярд³","галлон","галлон (UK)","литр","дм³","кварта","кварта (UK)"}));
              ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-    "акр-футов","бочка","баррель (нефти)","см³", "фут³", "Mcf=10³cf", "MMcf=10^6cf", "Bcf=10^9cf", "Tcf=10^12cf" ,"дюймов³","м³",
+    "акр-футов","баррель","баррель (нефть)","см³", "фут³", "Mcf=10³cf", "MMcf=10^6cf", "Bcf=10^9cf", "Tcf=10^12cf" ,"дюймов³","м³",
     "ярд³","галлон","галлон (UK)","литр","дм³","кварта","кварта (UK)"}));
                     }
                 } else {//in English
@@ -390,11 +390,9 @@ ToTxtField.setText(converter.myFormatter(converter.convert(
                         "унция/дюйм³", "унция/галлон", "petagram/л", "picogram/л", "фунт/фут³", "фунт/дюйм³", "фунт/галлон", "psi/1000 футов", "Teragram/л", "тон/ярд³"}));
                     } else {//shotList
                         FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "г/см³","ppm","кг/м³","г/м³","мг/м³","унция/галлон","фунт/фут³","фунт/дюйм³","фунт/гал(USA)",
-                        "г/л","кг/л","уд.масса","г/гал(USA)"}));
+                        "г/см³",  "г/л",    "кг/м³", "кг/л","фунт/фут³", "фунт/гал(USA)",  "ppm","уд.масса","г/гал(USA)"}));
                         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "г/см³","ppm","кг/м³","г/м³","мг/м³","унция/галлон","фунт/фут³","фунт/дюйм³","фунт/гал(USA)",
-                        "г/л","кг/л","уд.масса","г/гал(USA)"}));
+                        "г/см³",  "г/л",    "кг/м³", "кг/л","фунт/фут³", "фунт/гал(USA)",  "ppm","уд.масса","г/гал(USA)"}));
                     }
                 } else {//in English
                     if (!UnitsListForm) { //Long List 
@@ -459,22 +457,37 @@ ToTxtField.setText(converter.myFormatter(converter.convert(
                     }
                 } break;
             case 6://velocity
-                if (LangMenuItem) {//Russian
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "см/час","см/мин","см/с","фут/час","фут/мин","фут/сек","км/час","км/мин","км/с","узлов","ск.света","Маха (на уровне моря)",
-                        "Маха (SI)","м/час","м/мин","м/сек","миль/час","миль/мин","миль/сек","ярд/час","ярд/мин","ярд/сек"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "см/час","см/мин","см/с","фут/час","фут/мин","фут/сек","км/час","км/мин","км/с","узлов","ск.света","Маха (на уровне моря)",
-                        "Маха (SI)","м/час","м/мин","м/сек","миль/час","миль/мин","миль/сек","ярд/час","ярд/мин","ярд/сек"}));
-                } else {//in English
-                    FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "cm/hour","cm/minute","cm/second","foot/hour","foot/minute","foot/second","km/hour","km/minute","km/second","knot","light","mach (at sea level)",
-                        "mach (SI)", "m/hour", "m/minute", "m/second", "mile/hour", "mile/minute", "mile/second","yard/hour","yard/minute","yard/second"}));
-                    ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
-                        "cm/hour","cm/minute","cm/second","foot/hour","foot/minute","foot/second","km/hour","km/minute","km/second","knot","light","mach (at sea level)",
-                        "mach (SI)", "m/hour", "m/minute", "m/second", "mile/hour", "mile/minute", "mile/second","yard/hour","yard/minute","yard/second"}));
-                } break;
-        }
+                 if (LangMenuItem) {//Russian
+                     if (!UnitsListForm) {
+                         FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                             "см/час", "см/мин", "см/с", "фут/час", "фут/мин", "фут/сек", "км/час", "км/мин", "км/с", "узлов", "ск.света", "Маха (на уровне моря)",
+                             "Маха (SI)", "м/час", "м/мин", "м/сек", "миль/час", "миль/мин", "миль/сек", "ярд/час", "ярд/мин", "ярд/сек"}));
+                         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                             "см/час", "см/мин", "см/с", "фут/час", "фут/мин", "фут/сек", "км/час", "км/мин", "км/с", "узлов", "ск.света", "Маха (на уровне моря)",
+                             "Маха (SI)", "м/час", "м/мин", "м/сек", "миль/час", "миль/мин", "миль/сек", "ярд/час", "ярд/мин", "ярд/сек"}));
+                     } else {
+                         FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                         "фут/час","фут/мин","фут/сек","км/час","м/час","м/мин","м/сек","миль/час"}));
+                         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                         "фут/час","фут/мин","фут/сек","км/час","м/час","м/мин","м/сек","миль/час"}));
+                     }
+                 } else {//in English
+                     if (!UnitsListForm) {
+                         FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                             "cm/hour", "cm/minute", "cm/second", "foot/hour", "foot/minute", "foot/second", "km/hour", "km/minute", "km/second", "knot", "light", "mach (at sea level)",
+                             "mach (SI)", "m/hour", "m/minute", "m/second", "mile/hour", "mile/minute", "mile/second", "yard/hour", "yard/minute", "yard/second"}));
+                         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                             "cm/hour", "cm/minute", "cm/second", "foot/hour", "foot/minute", "foot/second", "km/hour", "km/minute", "km/second", "knot", "light", "mach (at sea level)",
+                             "mach (SI)", "m/hour", "m/minute", "m/second", "mile/hour", "mile/minute", "mile/second", "yard/hour", "yard/minute", "yard/second"}));
+                     } else {
+                         FromCmBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                         "foot/hour","foot/min","foot/sec","kilometer/hour","meter/hour","meter/min","meter/sec","mile/hour"}));
+                         ToCmBx.setModel(new javax.swing.DefaultComboBoxModel(new String[]{
+                         "foot/hour","foot/min","foot/sec","kilometer/hour","meter/hour","meter/min","meter/sec","mile/hour"}));
+                     }
+                     break;
+                 }
+         }
     }
     /**
      * @param args the command line arguments

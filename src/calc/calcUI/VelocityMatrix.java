@@ -4,6 +4,18 @@
  */
 package calc.calcUI;
 public class VelocityMatrix {
+    final static double VelocityCffshort [][] = {
+            //"foot/hour","foot/minute","foot/second","kilometer/hour","meter/hour","meter/minute","meter/second","mile/hour"
+    /*foot/hour,*/{1,60,3600,3280.839895,3.280839895,196.8503937,11811.023622,5280},
+    /*foot/minute,*/{0.016666666667,1,60,54.680664917,0.054680664917,3.280839895,196.8503937,88},
+    /*foot/second,*/{0.00027777777778,0.016666666667,1,0.91134441528,0.00091134441528,0.054680664917,3.280839895,1.4666666667},
+    /*kilometer/hour,*/{0.0003048,0.018288,1.09728,1,0.001,0.06,3.6,1.609344},
+    /*meter/hour,*/{0.3048,18.288,1097.28,1000,1,60,3600,1609.344},
+    /*meter/minute,*/{0.00508,0.3048,18.288,16.666666667,0.016666666667,1,60,26.8224},
+    /*meter/second,*/{0.000084666666667,0.00508,0.3048,0.27777777778,0.00027777777778,0.016666666667,1,0.44704},
+    /*mile/hour,*/{0.00018939393939,0.011363636364,0.68181818182,0.62137119224,0.00062137119224,0.037282271534,2.2369362921,1}
+};
+    
     final static double VelocityCff [][] = {
 //centimeter/hour,centimeter/minute,centimeter/second,foot/hour,foot/minute,foot/second,kilometer/hour,kilometer/minute,kilometer/second,knot,light,mach (at sea level),mach (SI standard),meter/hour,meter/minute,meter/second,mile/hour,mile/minute,mile/second,yard/hour,yard/minute,yard/second
     /*centimeter/hour,*/{1,6.0000000000E+001,3.6000000000E+003,3.0480000000E+001,1.8288000000E+003,1.0972800000E+005,1.0000000000E+005,6.0000000000E+006,3.6000000000E+008,1.8520000000E+005,1.0792528488E+014,1.1932560000E+008,1.0621670400E+008,1.0000000000E+002,6.0000000000E+003,3.6000000000E+005,1.6093440000E+005,9.6560640000E+006,5.7936384000E+008,9.1440000000E+001,5.4864000000E+003,3.2918400000E+005},
